@@ -13,8 +13,8 @@ Technically, we had an eclipse RCP application containing an `SWT Browser` displ
 Whatever you may think about that architecture, it was the client's request that the communication be done through javascript.
 
 Here's what I did : 
-  * I discovered that the WebBrowser control ("IE's activeX") let's its container provide the implementation for a special javascript object called window.external. 
-  * To do so, COM developpers create a COM object implementing the `IDispatch` interface, register it using a special method on the WebBrowser control, and manipulate window.external in javascript directly, or from COM native code.
+  * I discovered that the `WebBrowser` control ("IE's activeX") let's its container provide the implementation for a special javascript object called window.external. 
+  * To do so, COM developpers create a COM object implementing the `IDispatch` interface, register it using a special method on the `WebBrowser` control, and manipulate window.external in javascript directly, or from COM native code.
   * I decided I could provide some IDIspatch implementation of mine that would act as a transparent proxy to a java POJO.
   * The POJO provides the methods and fields. 
   * COM and IDispatch configuration is provided through annotations.
