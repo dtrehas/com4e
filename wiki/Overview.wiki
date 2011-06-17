@@ -1,4 +1,5 @@
 #summary Simple overview of COM4e features
+#labels Featured
 
 = Introduction =
 
