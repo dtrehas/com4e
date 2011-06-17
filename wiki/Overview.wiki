@@ -1,5 +1,4 @@
 #summary Simple overview of COM4e features
-#labels ²
 
 = Introduction =
 
@@ -61,10 +60,3 @@ with test.html containing:
 	document.getElementById("message").innerHTML = msg;
 </script>
 }}}
-
-COM4e  was
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
