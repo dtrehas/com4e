@@ -21,6 +21,8 @@ Here's what I did :
   * COM and IDispatch configuration is provided through annotations.
   * The framework handles all the rest automagically.
 
+COM4e was born. COM4e is the core framework about exposing an annotated POJO through IDispatch. COM4e has no link or dependency with the `WebBrowser` component. The special SWT glue to create a `SWT Browser`-like control that exposes the window.external might be found somewhere else (someday) (maybe) :)
+
 ==Some sample code will make things clear==
 
 Some fake COM interface that's easily written as an annotated POJO
