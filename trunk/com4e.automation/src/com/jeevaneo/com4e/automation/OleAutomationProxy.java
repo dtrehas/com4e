@@ -20,20 +20,29 @@ public class OleAutomationProxy implements InvocationHandler {
 
 	@SuppressWarnings("unchecked")
 	public static <T> T instrument(OleAutomation auto, Class<? extends T> clazz) {
-		return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[] { clazz }, new OleAutomationProxy(auto));
+		OleAutomationProxy oap = new OleAutomationProxy(auto);
+		T ret = (T) Proxy.newProxyInstance(clazz.getClassLoader(),
+				new Class[] { clazz }, oap);
+		Main.listMembers(auto);
+		return ret;
 	}
 
 	@Override
-	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		if (method.getName().startsWith("is") && (method.getReturnType().equals(Boolean.class) || method.getReturnType().equals(boolean.class))) {
+	public Object invoke(Object proxy, Method method, Object[] args)
+			throws Throwable {
+		if (method.getName().startsWith("is")
+				&& (method.getReturnType().equals(Boolean.class) || method
+						.getReturnType().equals(boolean.class))) {
 			// GET Property
 			String prop = method.getName().substring(2);
 			int[] dispIds = auto.getIDsOfNames(new String[] { prop });
 			if (null == dispIds) {
-				throw new IllegalStateException("Property " + prop + " : " + auto.getLastError());
+				throw new IllegalStateException("Property " + prop + " : "
+						+ auto.getLastError());
 			}
 			// if (method.getParameterTypes().length == 0) {
-			Variant vRet = auto.getProperty(dispIds[0], asVariants(args, method.getParameterTypes()));
+			Variant vRet = auto.getProperty(dispIds[0],
+					asVariants(args, method.getParameterTypes()));
 			return castAs(vRet, method.getReturnType());
 			// } else {
 			// throw new
@@ -41,15 +50,19 @@ public class OleAutomationProxy implements InvocationHandler {
 			// + prop);
 			// }
 		}
-		if (method.getName().startsWith("get") && !method.getReturnType().equals(void.class)) {
+		if (method.getName().startsWith("get")
+				&& !method.getReturnType().equals(void.class)) {
 			// GET Property
 			String prop = method.getName().substring(3);
 			int[] dispIds = auto.getIDsOfNames(new String[] { prop });
 			if (null == dispIds) {
-				throw new IllegalStateException("Property " + prop + " : " + auto.getLastError());
+				Main.listMembers(auto);
+				throw new IllegalStateException("Property " + prop + " : "
+						+ auto.getLastError());
 			}
 			// if (method.getParameterTypes().length == 0) {
-			Variant vRet = auto.getProperty(dispIds[0], asVariants(args, method.getParameterTypes()));
+			Variant vRet = auto.getProperty(dispIds[0],
+					asVariants(args, method.getParameterTypes()));
 			return castAs(vRet, method.getReturnType());
 			// } else {
 			// throw new
@@ -57,14 +70,17 @@ public class OleAutomationProxy implements InvocationHandler {
 			// + prop);
 			// }
 		}
-		if (method.getName().startsWith("set") && method.getReturnType().equals(void.class)) {
+		if (method.getName().startsWith("set")
+				&& method.getReturnType().equals(void.class)) {
 			// SET Property
 			String prop = method.getName().substring(3);
 			int[] dispIds = auto.getIDsOfNames(new String[] { prop });
 			if (null == dispIds) {
-				throw new IllegalStateException("Property " + prop + " : " + auto.getLastError());
+				throw new IllegalStateException("Property " + prop + " : "
+						+ auto.getLastError());
 			}
-			auto.setProperty(dispIds[0], asVariants(args, method.getParameterTypes()));
+			auto.setProperty(dispIds[0],
+					asVariants(args, method.getParameterTypes()));
 			return null;
 		}
 
@@ -72,7 +88,8 @@ public class OleAutomationProxy implements InvocationHandler {
 		String methodName = method.getName();
 		int[] dispIds = auto.getIDsOfNames(new String[] { methodName });
 		if (null == dispIds) {
-			throw new IllegalStateException("Method " + methodName + " : " + auto.getLastError());
+			throw new IllegalStateException("Method " + methodName + " : "
+					+ auto.getLastError());
 		}
 		Variant[] vArgs = asVariants(args, method.getParameterTypes());
 		Variant vRet = auto.invoke(dispIds[0], vArgs);
@@ -119,19 +136,24 @@ public class OleAutomationProxy implements InvocationHandler {
 		if (class1.isAssignableFrom(IDispatch.class)) {
 			return new Variant((IDispatch) object);
 		}
-		throw new UnsupportedOperationException("Type de paramètre non supporté : " + class1);
+		throw new UnsupportedOperationException(
+				"Type de paramètre non supporté : " + class1);
 	}
 
 	private Object castAs(Variant vRet, Class<?> returnType) {
 		if (null == vRet)
 			return null;
+		if(vRet.getType()==OLE.VT_EMPTY) {
+			return null;
+		}
 		if (returnType.equals(String.class)) {
 			return vRet.getString();
 		}
 		if (returnType.equals(Integer.class) || returnType.equals(int.class)) {
 			return vRet.getInt();
 		}
-		if (returnType.equals(Boolean.class) || returnType.equals(boolean.class)) {
+		if (returnType.equals(Boolean.class)
+				|| returnType.equals(boolean.class)) {
 			return vRet.getBoolean();
 		}
 		if (returnType.equals(Double.class) || returnType.equals(double.class)) {
@@ -157,9 +179,12 @@ public class OleAutomationProxy implements InvocationHandler {
 		}
 		if (vRet.getType() == OLE.VT_DISPATCH) {
 			Class<?> clazz = returnType;
-			return Proxy.newProxyInstance(clazz.getClassLoader(), new Class[] { clazz }, new OleAutomationProxy(vRet.getAutomation()));
+			return Proxy.newProxyInstance(clazz.getClassLoader(),
+					new Class[] { clazz },
+					new OleAutomationProxy(vRet.getAutomation()));
 		}
-		throw new UnsupportedOperationException("Type de paramètre non supporté : " + returnType);
+		throw new UnsupportedOperationException(
+				"Type de paramètre non supporté : " + returnType);
 	}
 
 }
