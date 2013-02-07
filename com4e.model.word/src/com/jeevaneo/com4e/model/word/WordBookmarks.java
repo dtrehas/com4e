@@ -1,6 +1,8 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordBookmarks {
+import com.jeevaneo.com4e.automation.IOleAutomated;
+
+public interface WordBookmarks extends IOleAutomated {
 
 	WordBookmark add(String name);
 

@@ -1,6 +1,8 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordField {
+import com.jeevaneo.com4e.automation.IOleAutomated;
+
+public interface WordField extends IOleAutomated {
 	WordApplication getApplication();
 
 	String getData();

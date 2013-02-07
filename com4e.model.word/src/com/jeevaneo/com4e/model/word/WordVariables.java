@@ -1,6 +1,8 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordVariables {
+import com.jeevaneo.com4e.automation.IOleAutomated;
+
+public interface WordVariables extends IOleAutomated {
 	WordVariable item(long i);
 
 	WordVariable item(String name);

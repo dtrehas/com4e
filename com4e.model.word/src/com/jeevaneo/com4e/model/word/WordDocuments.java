@@ -1,5 +1,7 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordDocuments {
+import com.jeevaneo.com4e.automation.IOleAutomated;
+
+public interface WordDocuments extends IOleAutomated {
 	WordDocument Open(String filename);
 }
