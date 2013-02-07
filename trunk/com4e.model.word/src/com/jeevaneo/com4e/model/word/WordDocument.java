@@ -1,6 +1,8 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordDocument {
+import com.jeevaneo.com4e.automation.IOleAutomated;
+
+public interface WordDocument extends IOleAutomated {
 	String getName();
 
 	WordApplication getApplication();

@@ -1,6 +1,8 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordSections {
+import com.jeevaneo.com4e.automation.IOleAutomated;
+
+public interface WordSections extends IOleAutomated {
 	WordSection add();
 
 	WordSection item(long i);

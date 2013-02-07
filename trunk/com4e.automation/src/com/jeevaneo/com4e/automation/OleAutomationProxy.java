@@ -23,13 +23,24 @@ public class OleAutomationProxy implements InvocationHandler {
 		OleAutomationProxy oap = new OleAutomationProxy(auto);
 		T ret = (T) Proxy.newProxyInstance(clazz.getClassLoader(),
 				new Class[] { clazz }, oap);
-		Main.listMembers(auto);
+		// Main.listMembers(auto);
 		return ret;
 	}
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
+		if (method.getDeclaringClass().equals(IOleAutomated.class)) {
+			if (method.getName().equals("getPointer")
+					&& method.getReturnType().equals(Variant.class)) {
+				return new Variant(auto);
+			}
+			if (method.getName().equals("getOleAutomation")
+					&& method.getReturnType().equals(OleAutomation.class)) {
+				return auto;
+			}
+		}
+
 		if (method.getName().startsWith("is")
 				&& (method.getReturnType().equals(Boolean.class) || method
 						.getReturnType().equals(boolean.class))) {
@@ -136,6 +147,9 @@ public class OleAutomationProxy implements InvocationHandler {
 		if (class1.isAssignableFrom(IDispatch.class)) {
 			return new Variant((IDispatch) object);
 		}
+		if (class1.isAssignableFrom(IOleAutomated.class)) {
+			return ((IOleAutomated) object).getPointer();
+		}
 		throw new UnsupportedOperationException(
 				"Type de paramètre non supporté : " + class1);
 	}
@@ -143,7 +157,7 @@ public class OleAutomationProxy implements InvocationHandler {
 	private Object castAs(Variant vRet, Class<?> returnType) {
 		if (null == vRet)
 			return null;
-		if(vRet.getType()==OLE.VT_EMPTY) {
+		if (vRet.getType() == OLE.VT_EMPTY) {
 			return null;
 		}
 		if (returnType.equals(String.class)) {

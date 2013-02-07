@@ -1,6 +1,8 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordRange {
+import com.jeevaneo.com4e.automation.IOleAutomated;
+
+public interface WordRange extends IOleAutomated {
 	String getXML();
 
 	void setText(String t);

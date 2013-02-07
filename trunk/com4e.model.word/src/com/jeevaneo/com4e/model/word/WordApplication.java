@@ -1,9 +1,9 @@
 package com.jeevaneo.com4e.model.word;
 
-public interface WordApplication {
-	void activate();
-	
+import com.jeevaneo.com4e.automation.IOleAutomated;
 
+public interface WordApplication extends IOleAutomated {
+	void activate();
 	
 	WordDocuments getDocuments();
 	
