@@ -33,7 +33,9 @@ public class OleAutomationProxy implements InvocationHandler {
 		if (method.getDeclaringClass().equals(IOleAutomated.class)) {
 			if (method.getName().equals("getPointer")
 					&& method.getReturnType().equals(Variant.class)) {
-				return new Variant(auto);
+				Variant ret = new Variant(auto);
+				System.out.println(ret);
+				return ret;
 			}
 			if (method.getName().equals("getOleAutomation")
 					&& method.getReturnType().equals(OleAutomation.class)) {
@@ -147,8 +149,11 @@ public class OleAutomationProxy implements InvocationHandler {
 		if (class1.isAssignableFrom(IDispatch.class)) {
 			return new Variant((IDispatch) object);
 		}
-		if (class1.isAssignableFrom(IOleAutomated.class)) {
+		if (object instanceof IOleAutomated) /*class1.isAssignableFrom(IOleAutomated.class))*/ {
 			return ((IOleAutomated) object).getPointer();
+		}
+		if(object instanceof Variant) {
+			return (Variant) object;
 		}
 		throw new UnsupportedOperationException(
 				"Type de paramètre non supporté : " + class1);

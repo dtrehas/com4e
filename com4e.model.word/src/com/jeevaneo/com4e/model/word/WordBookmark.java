@@ -22,4 +22,8 @@ public interface WordBookmark extends IOleAutomated {
 	long getStart();
 
 	void setStart(long s);
+
+	long getEnd();
+
+	void setEnd(long s);
 }

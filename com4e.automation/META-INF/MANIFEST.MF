@@ -6,4 +6,4 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: JEEVANEO
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: com.jeevaneo.com4e.automation
-Require-Bundle: org.eclipse.swt;bundle-version="3.100.1"
+Require-Bundle: org.eclipse.swt;bundle-version="3.100.1";visibility:=reexport
