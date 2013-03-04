@@ -9,4 +9,6 @@ public interface WordApplication extends IOleAutomated {
 	
 	WordDocument getActiveDocument();
 	
+	void quit();
+	
 }
