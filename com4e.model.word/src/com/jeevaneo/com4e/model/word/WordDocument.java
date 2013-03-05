@@ -16,6 +16,9 @@ public interface WordDocument extends IOleAutomated {
 	WordBookmarks getBookmarks();
 
 	WordSections getSections();
+	
+//	WordSelection getSelection();
+	
 	String getCodeName();
 	WordRange getContent();
 
@@ -32,6 +35,7 @@ public interface WordDocument extends IOleAutomated {
 	void select();
 	void undo();
 	WordRange range();
+	WordRange range(long start, long end);
 
 	void activate();
 }
