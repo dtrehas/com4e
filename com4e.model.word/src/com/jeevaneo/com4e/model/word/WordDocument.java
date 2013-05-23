@@ -6,7 +6,7 @@ public interface WordDocument extends IOleAutomated {
 	String getName();
 
 	WordApplication getApplication();
-	
+
 	WordParagraphs getParagraphs();
 
 	WordVariables getVariables();
@@ -16,26 +16,38 @@ public interface WordDocument extends IOleAutomated {
 	WordBookmarks getBookmarks();
 
 	WordSections getSections();
-	
-//	WordSelection getSelection();
-	
+
+	// WordSelection getSelection();
+
 	String getCodeName();
+
 	WordRange getContent();
 
 	void close();
+
 	/**
-	 * <li>wdNotSaveChanges : 0</li>
-	 * <li>wdPromptToSaveChanges : -2</li>
-	 * <li>wdSaveChanges : -1</li>
+	 * <li>wdNotSaveChanges : 0</li> <li>wdPromptToSaveChanges : -2</li> <li>
+	 * wdSaveChanges : -1</li>
+	 * 
 	 * @param option
 	 */
-	void close(long option); 
+	void close(long option);
+
 	void save();
+
 	void saveAs(String filename);
+
 	void select();
+
 	void undo();
+
 	WordRange range();
+
 	WordRange range(long start, long end);
 
 	void activate();
+
+	void printPreview();
+	
+	void printOut();
 }
