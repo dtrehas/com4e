@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Word
+Bundle-SymbolicName: com4e.model.word
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: JEEVANEO
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.jeevaneo.com4e.model.word
+Require-Bundle: com4e.automation;bundle-version="1.0.0"

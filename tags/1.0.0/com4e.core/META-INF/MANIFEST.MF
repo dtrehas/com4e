@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Com Plug-in
+Bundle-SymbolicName: com4e.core
+Bundle-Version: 1.0.0
+Bundle-Vendor: Alexandre Borgoltz
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.swt;bundle-version="3.4.2"
+Export-Package: com4e.core.annotations,
+ com4e.core.api,
+ com4e.core.impl
