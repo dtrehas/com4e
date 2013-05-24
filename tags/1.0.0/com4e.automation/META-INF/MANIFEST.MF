@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: OLE Automation
-Bundle-SymbolicName: com4e.automation
-Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: JEEVANEO
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: com.jeevaneo.com4e.automation
-Require-Bundle: org.eclipse.swt;bundle-version="3.100.0";visibility:=reexport
