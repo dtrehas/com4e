@@ -6,12 +6,13 @@
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
     xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
+    xmlns:projectset="http://www.eclipse.org/oomph/setup/projectset/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projectset/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/ProjectSet.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
     name="com4e"
     label="COM4E">
   <setupTask
@@ -384,7 +385,10 @@
     </workingSet>
   </setupTask>
   <setupTask
-      xsi:type="setup:ResourceCopyTask"/>
+      xsi:type="projectset:ProjectSetImportTask"
+      uRL="http://svn.codespot.com/a/eclipselabs.org/com4e/${com4e.branch}/com4e.releng/com4e.psf">
+    <description>com4e source projects</description>
+  </setupTask>
   <stream name="master"
       label="Master">
     <setupTask
@@ -412,6 +416,10 @@
         xsi:type="setup:VariableTask"
         name="cdo.baseline.version"
         value="4.3"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="com4e.branch"
+        value="trunk"/>
   </stream>
   <stream name="streams/4.3-maintenance"
       label="4.3 Maintenance">
@@ -440,5 +448,9 @@
         xsi:type="setup:VariableTask"
         name="cdo.baseline.version"
         value="4.3"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="com4e.branch"
+        value="branches/test"/>
   </stream>
 </setup:Project>
