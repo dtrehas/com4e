@@ -421,8 +421,8 @@
         name="com4e.branch"
         value="trunk"/>
   </stream>
-  <stream name="streams/4.3-maintenance"
-      label="4.3 Maintenance">
+  <stream name="branches/test"
+      label="Test">
     <setupTask
         xsi:type="setup.p2:P2Task">
       <requirement
