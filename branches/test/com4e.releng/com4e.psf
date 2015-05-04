@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.team.svn.core.svnnature">
+<project reference="1.0.1,https://svn.codespot.com/a/eclipselabs.org/com4e/trunk/com4e.automation,com4e.automation,a001585ca3f200141be8d08be1cab508;https://svn.codespot.com/a/eclipselabs.org/com4e;EclipseLabs COM4e;branches;tags;trunk;true;c84889f2-4533-1ff6-b59a-a5bad299ab3f;https://svn.codespot.com/a/eclipselabs.org/com4e;;false;;;0"/>
+<project reference="1.0.1,https://svn.codespot.com/a/eclipselabs.org/com4e/trunk/com4e.core,com4e.core,a001585ca3f200141be8d08be1cab508;https://svn.codespot.com/a/eclipselabs.org/com4e;EclipseLabs COM4e;branches;tags;trunk;true;c84889f2-4533-1ff6-b59a-a5bad299ab3f;https://svn.codespot.com/a/eclipselabs.org/com4e;;false;;;0"/>
+<project reference="1.0.1,https://svn.codespot.com/a/eclipselabs.org/com4e/trunk/com4e.feature,com4e.feature,a001585ca3f200141be8d08be1cab508;https://svn.codespot.com/a/eclipselabs.org/com4e;EclipseLabs COM4e;branches;tags;trunk;true;c84889f2-4533-1ff6-b59a-a5bad299ab3f;https://svn.codespot.com/a/eclipselabs.org/com4e;;false;;;0"/>
+<project reference="1.0.1,https://svn.codespot.com/a/eclipselabs.org/com4e/trunk/com4e.model.word,com4e.model.word,a001585ca3f200141be8d08be1cab508;https://svn.codespot.com/a/eclipselabs.org/com4e;EclipseLabs COM4e;branches;tags;trunk;true;c84889f2-4533-1ff6-b59a-a5bad299ab3f;https://svn.codespot.com/a/eclipselabs.org/com4e;;false;;;0"/>
+<project reference="1.0.1,https://svn.codespot.com/a/eclipselabs.org/com4e/trunk/com4e.update-site,com4e.update-site,a001585ca3f200141be8d08be1cab508;https://svn.codespot.com/a/eclipselabs.org/com4e;EclipseLabs COM4e;branches;tags;trunk;true;c84889f2-4533-1ff6-b59a-a5bad299ab3f;https://svn.codespot.com/a/eclipselabs.org/com4e;;false;;;0"/>
+</provider>
+</psf>
